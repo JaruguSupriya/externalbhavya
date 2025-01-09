@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #80ff7e, #ff7575);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: left;
+            display: block;
+            color: #ffe5ec;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            background: #ffe6f2;
+            color: #333;
+        }
+        button {
+            background: #ff5f6d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        button:hover {
+            background: #ff4b60;
+        }
+        #result {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #fff700;
+        }
+    </style>
+</head>
+<body>
+    <h1>CGPA Calculator</h1>
+    <form id="cgpaForm">
+        <label for="gpa1">Semester 1 GPA:</label>
+        <input type="number" id="gpa1" min="0" max="10" step="0.01" required>
+        <label for="gpa2">Semester 2 GPA:</label>
+        <input type="number" id="gpa2" min="0" max="10" step="0.01" required>
+        <label for="gpa3">Semester 3 GPA:</label>
+        <input type="number" id="gpa3" min="0" max="10" step="0.01" required>
+        <label for="gpa4">Semester 4 GPA:</label>
+        <input type="number" id="gpa4" min="0" max="10" step="0.01" required>
+        <label for="gpa5">Semester 5 GPA:</label>
+        <input type="number" id="gpa5" min="0" max="10" step="0.01" required>
+        <label for="gpa6">Semester 6 GPA:</label>
+        <input type="number" id="gpa6" min="0" max="10" step="0.01" required>
+        <button type="button" onclick="calcCGPA()">Calculate</button>
+    </form>
+    <h2>Your CGPA: <span id="result">-</span></h2>
+
+    <script>
+        const calcCGPA = () => {
+            let total = 0, count = 0;
+            document.querySelectorAll('input[type="number"]').forEach(input => {
+                total += parseFloat(input.value || 0);
+                count++;
+            });
+            const cgpa = total / count || 0;
+            document.getElementById('result').innerText = cgpa.toFixed(2);
+        };
+    </script>
+</body>
+</html>
